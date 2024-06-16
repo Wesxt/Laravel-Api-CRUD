@@ -2,20 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\studentController;
+use App\Http\Controllers\Api\StudentController;
 
-Route::get('/students', [studentController::class, 'index']);
+Route::get('/students', [StudentController::class, 'index']);
 
-Route::get('/students/{id}', function () {
-    return 'Obteniendo un estudiante';
-});
+Route::get('/students/{id}', [StudentController::class, 'show']);
 
-Route::post('/students', [studentController::class, 'store']);
+Route::post('/students', [StudentController::class, 'store']);
 
-Route::put('/students/{id}', function () {
-    return 'Actualizando Estudiantes';
-});
+Route::put('/students/{id}', [StudentController::class, 'update']);
 
-Route::delete('/students/{id}', function () {
-    return 'Eliminando estudiantes';
-});
+Route::patch('/students/{id}', [StudentController::class, 'updatePartial']);
+
+
+Route::delete('/students/{id}', [StudentController::class, 'destroy']);
